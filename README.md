@@ -6,7 +6,7 @@ A **computer vision** project that converts real-time webcam footage into animat
 
 ## 🎥 Preview
 
-
+![ASCII Camera Demo](demo.gif)
 
 ---
 
