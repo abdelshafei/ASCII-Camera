@@ -9,8 +9,10 @@ ascii_chars = (' ', '.', "'", ',', ':', ';', 'c', 'l', 'x', 'o', '*', '?', 'k', 
 # To not show actual live webcam footage
 SHOW_REAL_VIDEO = False
 
-COLOURIZED = False
+COLOURIZED = False # LATER FEATURE
 
+
+####################### Gray Version ###########################
 def rowToAscii(row):
     scale = len(ascii_chars)
     return tuple(ascii_chars[min(int(x / 256 * scale), scale - 1)] for x in row)
@@ -21,6 +23,9 @@ def pixelToAscii(grayVal):
 def showAscii(gray_frame):
     os.system("clear")
     print('\n'.join((''.join(row) for row in gray_frame)), end='')
+################################################################
+
+
 
 capture = cv2.VideoCapture(0)
 
@@ -43,11 +48,11 @@ while(cv2.waitKey(1) & 0xFF != ord('q')):
         ascii_frame = pixelToAscii(adjusted_frame)
         showAscii(ascii_frame)
 
+        if SHOW_REAL_VIDEO:
+            cv2.imshow('Grayscale Frame', gray_frame)
+
     # else:
         
-
-    if SHOW_REAL_VIDEO:
-        cv2.imshow('Grayscale Frame', adjusted_frame)
         
                 
 
